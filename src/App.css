@@ -3,7 +3,7 @@
   @apply box-border;
 }
 .dashboard-text{
-  @apply text-2xl font-bold my-5
+  @apply text-2xl font-bold mt-5
 }
 .cover{
   /* box-shadow: 0 1px 0 #091e4240; */
