@@ -1,38 +1,72 @@
-.App {
-  text-align: center;
+*{
+  outline:none;
+  @apply box-border;
+}
+.dashboard-text{
+  @apply text-2xl font-bold my-5
+}
+.cover{
+  /* box-shadow: 0 1px 0 #091e4240; */
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,0.2);
+  @apply rounded-lg border relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.head-action{
+  @apply flex p-4 pr-2 border-b-2  justify-between
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+table{
+  table-layout: auto;
+  @apply border w-full max-w-full
+}
+td{
+  @apply text-center
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+tr{
+  @apply hover:bg-neutral-50 max-w-full
+}
+
+.but{
+  @apply px-4 py-1 rounded text-white
+}
+
+
+
+.modal{
+  background: rgba(0,0,0,0.3);
+  @apply fixed top-0 left-0 right-0 bottom-0 z-30;
+}
+
+.modal-content{
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+  bg-white rounded-lg w-10/12 max-w-xs
+}
+
+input{
+  @apply border-2 px-2 py-1 rounded text-neutral-700
+}
+
+label{
+  @apply md:text-center mb-2 md:mb-0 text-neutral-600
+}
+
+form{
+  /* @apply block */
+}
+
+.control-cover{
+  @apply grid md:grid-cols-4 mb-5
+}
+
+.not-found-box{
+  min-height: 80vh;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content:center;
+  align-items:center;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sort-icons{
+  @apply inline-block w-9 cursor-pointer
 }
