@@ -43,7 +43,7 @@ function App({setUsers, all_users}) {
         <h1 className="dashboard-text">Dashboard</h1>
         {apiError &&
           <div 
-            className="text-sm text-red-400 mb-5 mt-3 flex justify-center" >
+            className="text-sm text-red-400 mb-5 flex justify-center" >
               {apiError}
           </div>
         }
