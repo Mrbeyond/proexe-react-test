@@ -21,9 +21,11 @@ const PROXY = "https://my-json-server.typicode.com/karolkproexe/jsonplaceholderd
 function App({setUsers, all_users}) {
 
   const [apiError, setApiError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(()=>{
     if(all_users) return;
+    setLoading(true);
     axios.get(PROXY).then(data=>{
       setUsers(data.data)
     }).catch(error=>{
@@ -34,6 +36,8 @@ function App({setUsers, all_users}) {
         setApiError("")
       },4000);
       // console.log(error);
+    }).finally(()=>{
+      setLoading(false);
     })
   },[setUsers, all_users]);
 
@@ -41,6 +45,11 @@ function App({setUsers, all_users}) {
     <div className="px-2 pb-10 sm:px-10 md:px-20 lg:px-28 xl:px-36">
       <Router>
         <h1 className="dashboard-text">Dashboard</h1>
+        {loading &&
+          <div className="flex justify-center text-sm font-medium"> 
+            Loading data, please wait...
+          </div>
+        }
         {apiError &&
           <div 
             className="text-sm text-red-400 mb-5 flex justify-center" >
