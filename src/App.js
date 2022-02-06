@@ -46,7 +46,7 @@ function App({setUsers, all_users}) {
       <Router>
         <h1 className="dashboard-text">Dashboard</h1>
         {loading &&
-          <div className="flex justify-center text-sm font-medium"> 
+          <div className="flex justify-center mb-5 text-sm font-medium"> 
             Loading data, please wait...
           </div>
         }
