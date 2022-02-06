@@ -11,7 +11,8 @@ const rootReducer = (state=initialState, action)=>{
     
   }
   else if(action.type === NEW_USER){
-    return {...state, all_users:[...state.all_users, action.payload]}
+    let current = state.all_users??[];
+    return {...state, all_users:[...current, action.payload]}
   }
 
   return state;
