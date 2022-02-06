@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
-import { UserList } from "../global/action";
 import EditUser from "./EditUser";
 
 
