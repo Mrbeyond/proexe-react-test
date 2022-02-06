@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { usersList } from "../global/action";
@@ -12,12 +12,6 @@ const UserList = ({ setUsers, all_users})=>{
 
   let [deleteKey, setDeleteKey] = useState(false);
   let [deleteLoad, setDeleteLoad] = useState(null);
-
-  useEffect(()=>{
-    if(!all_users) return;
-    console.log(all_users);
-  },[all_users]);
-
 
 
   const preparedelete=(user)=>{
@@ -35,31 +29,25 @@ const UserList = ({ setUsers, all_users})=>{
   }
 
   const ascendSort=()=>{
-
-    setUsers(all_users.sort((a,b)=>{
-      let A = a.username.toUpperCase();
-      let B = b.username.toUpperCase();
+    const sorted = all_users.sort((a,b)=>{
+      let A = a.username?.toUpperCase();
+      let B = b.username?.toUpperCase();
       if(A < B) return -1;
       if(A > B) return 1;
       return 0;
-    }));
+    })
+    setUsers([...sorted]);
   }
 
   const descendSort=()=>{
-    console.log(all_users.sort((a,b)=>{      
-      let A = a.username.toUpperCase();
-      let B = b.username.toUpperCase();
+    const sorted= all_users.sort((a,b)=>{      
+      let A = a.username?.toUpperCase();
+      let B = b.username?.toUpperCase();
       if(A > B) return -1;
       if(A < B) return 1;
       return 0;
-    }));
-    setUsers(all_users.sort((a,b)=>{      
-      let A = a.username.toUpperCase();
-      let B = b.username.toUpperCase();
-      if(A > B) return -1;
-      if(A < B) return 1;
-      return 0;
-    }));
+    });
+    setUsers([...sorted]);
   }
 
 
@@ -100,7 +88,6 @@ const UserList = ({ setUsers, all_users})=>{
               </tr>
             </thead>
             <tbody>
-            {/* {users && users.map((user)=>( */}
             {all_users && all_users.map((user)=>(
               <tr key={user.id} className="border-t p-4">
                 <td className=" p-4">
@@ -109,13 +96,13 @@ const UserList = ({ setUsers, all_users})=>{
                   </span>
                 </td>
                 <td>
-                  {user?.name}
+                  {user.name}
                 </td>
                 <td className="fullname">
                   {user?.username }
                 </td>
                 <td className="fullname">
-                  {user?.email }
+                  {user.email }
                 </td>
                 <td>
                   {user?.address?.city}
@@ -172,9 +159,7 @@ const UserList = ({ setUsers, all_users})=>{
   )
 }
 
-// const mapStateToProps=(state)=>({
-//  all_users: state.all_users,
-// })
+
 
 const mapDispatchToProps=(dispatch)=>({
   setUsers:(payload)=>dispatch(usersList(payload)),
